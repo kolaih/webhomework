@@ -12,8 +12,8 @@ server.use(
 
 server.use(express.json());
 
+server.use("/produtos", produtoRoute);
 server.use("/produto", produtoRoute);
-server.use("/", produtoRoute);
 server.use("/produto/:_id", produtoRoute);
 
 
