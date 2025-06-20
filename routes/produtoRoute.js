@@ -19,7 +19,7 @@ router.post('/produto', (req, res) => {
   }
 })
 
-router.get('/produtos', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const produtos = await Produto.find(); // busca todos os documentos da coleção
     return res.json(produtos);
