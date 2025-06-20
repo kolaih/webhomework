@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Produto = require('../models/Produto');
 
-router.post('/', (req, res) => {
+router.post('/produto', (req, res) => {
   const { nome, descricao, cor, peso, tipo, preco, dataCadastro } = req.body;
   if (!nome && !descricao && !cor && !peso && !tipo && !preco) {
         res.status(422).json({error: 'Informar o nome, descricao, cor, peso, tipo e preco é obrigatório!'})
@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
   }
 })
 
-router.get('/', async (req, res) => {
+router.get('/produtos', async (req, res) => {
   try {
     const produtos = await Produto.find(); // busca todos os documentos da coleção
     return res.json(produtos);
