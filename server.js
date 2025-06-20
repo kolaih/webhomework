@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const server = express();
 const produtoRoute = require("./routes/produtoRoute");
-const PORT = process.env.PORT || 3000;
+const cors = require('cors');
+server.use(cors());
 //middleware
 server.use(
   express.urlencoded({
@@ -12,8 +13,8 @@ server.use(
 
 server.use(express.json());
 
-server.use("/", produtoRoute);
 server.use("/produto", produtoRoute);
+server.use("/", produtoRoute);
 server.use("/produto/:_id", produtoRoute);
 
 
@@ -30,4 +31,4 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-server.listen(PORT);
+server.listen(3000);
